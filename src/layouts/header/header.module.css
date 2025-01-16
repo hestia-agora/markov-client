@@ -1,0 +1,61 @@
+.header {
+    grid-column: 2/-1;
+    grid-row: 1/2;
+    background-color: var(--color-trans);
+    padding: 0 var(--padding-section);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-gray-900);
+  }
+
+  .logoImage {
+    height: 5rem;
+  }
+
+  .headerLogo{
+    display: flex;
+  }
+  
+  .rightContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:var(--spacing-md)
+  }
+  
+  .userName{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: var(--font-s-sm);
+    color: var(--color-gray-900);
+  }
+  .fullName svg{
+    font-size: var(--font-s-lg);
+    margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transform: translateX(-2px);
+    color: var(--color-gray-700);  
+  }
+  .fullName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-s-sm);
+    letter-spacing: -0.5px;
+  }
+  .fullName:hover{
+    color: var(--color-primary-hover);
+  }
+  .logoutContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .spacing{
+    margin-right: 5px;
+    margin-top: 5px;
+  }

@@ -1,7 +1,5 @@
 import Styles from "./header.module.css";
 import logoImage from "../../assets/logo.jpg";
-import userIcon from "../../assets/user.png";
-import logoutIcon from "../../assets/logout.png";
 
 function Header() {
 

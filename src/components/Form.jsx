@@ -100,6 +100,8 @@ const Form = ({ setResults }) => {
                 <button type="submit" className="form-button">
                 Beräkning 
                 </button>
+
+
             </form>
         </div>
     );

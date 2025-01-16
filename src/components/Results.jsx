@@ -13,18 +13,21 @@ const Results = ({ results }) => {
         "Trycksår",
         "Död"
     ];
-
     // Render a single matrix with a title
-    const renderMatrix = (matrix, title) => (
+    const renderMatrix = (matrix, title, isTransitionProbabilities = false) => (
         <div className="results-table-container">
             <h2 className="results-title">{title}</h2>
             <table className="results-table">
                 <thead>
                     <tr>
                         <th>State</th>
-                        {matrix[0]?.map((_, index) => (
-                            <th key={index}>Cycle {index + 1}</th>
-                        ))}
+                        {isTransitionProbabilities
+                            ? stateNames.map((name, index) => (
+                                  <th key={index}>{name}</th>
+                              )) // Use state names as headers for transition probabilities
+                            : matrix[0]?.map((_, index) => (
+                                  <th key={index}>Cycle {index + 1}</th>
+                              ))} {/* Default headers */}
                     </tr>
                 </thead>
                 <tbody>
@@ -76,12 +79,14 @@ const Results = ({ results }) => {
             {results['Transition Probabilities'] &&
                 renderMatrix(
                     results['Transition Probabilities']['utan_insats'],
-                    'Övergångssannolikheter (utan intervention)'
+                    'Övergångssannolikheter (utan intervention)',
+                    true // Pass the flag
                 )}
             {results['Transition Probabilities'] &&
                 renderMatrix(
                     results['Transition Probabilities']['med_insats'],
-                    'Övergångssannolikheter (med intervention)'
+                    'Övergångssannolikheter (med intervention)',
+                    true // Pass the flag
                 )}
 
             {/* Population Results */}

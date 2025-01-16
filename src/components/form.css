@@ -1,3 +1,15 @@
+.form-image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
 .form-container {
     background-color: #fafafa;
     padding: 20px;

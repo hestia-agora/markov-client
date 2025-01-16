@@ -1,6 +1,8 @@
-import axios from 'axios';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:5000';
+if (!API_BASE_URL) {
+    throw new Error("API_BASE_URL is not defined. Please check your environment variables.");
+}
 
 export const runModel = async (params) => {
     try {

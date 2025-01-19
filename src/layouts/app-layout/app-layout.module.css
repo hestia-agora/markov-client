@@ -18,7 +18,11 @@
 .main {
     flex: 1;
     padding: 20px;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 15px;
     overflow-y: auto; /* Allows scrolling for long content */
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

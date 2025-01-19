@@ -1,5 +1,5 @@
 import Styles from "./header.module.css";
-import logoImage from "../../assets/logo.jpg";
+import logoImage from "../../assets/logos/livsmedelsakademin.jpg";
 
 function Header() {
 
@@ -9,7 +9,7 @@ function Header() {
         <img
           className={Styles.logoImage}
           src={logoImage}
-          alt="hestia agora brand logo image"
+          alt="Brand logo image"
         />
       </div>
       <div className={Styles.rightContainer}>

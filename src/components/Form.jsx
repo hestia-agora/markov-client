@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { runModel } from '../utils/api';
 import  "./form.css";
+import logoImage from "../assets/logos/hestia-agora.png";
+
+
 const Form = ({ setResults }) => {
     const [formData, setFormData] = useState({
         gender: 'man',
@@ -30,7 +33,7 @@ const Form = ({ setResults }) => {
 
     return (
         <div className="form-container">
-            <h2 className="form-title">Markovmodellens parametrar V2</h2>
+            <h2 className="form-title">Markovmodellens parametrar</h2>
             <form onSubmit={handleSubmit} className="form">
                 <div className="form-group">
                     <label htmlFor="gender">Välj kön:</label>
@@ -101,7 +104,11 @@ const Form = ({ setResults }) => {
                 Beräkning 
                 </button>
 
-
+                <img
+          className= "logoImage"
+          src={logoImage}
+          alt="hestia agora brand logo image"
+        />
             </form>
         </div>
     );

@@ -1,5 +1,5 @@
 import Styles from "./header.module.css";
-import logoImage from "../../assets/logos/livsmedelsakademin.jpg";
+import logoImage from "../../assets/logos/livsmedelsakademin.png";
 
 function Header() {
 

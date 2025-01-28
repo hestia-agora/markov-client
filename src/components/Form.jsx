@@ -33,7 +33,7 @@ const Form = ({ setResults }) => {
 
     return (
         <div className="form-container">
-            <h2 className="form-title">Markovmodellens parametrar</h2>
+            <h2 className="form-title">Markovmodellens parametrar 1</h2>
             <form onSubmit={handleSubmit} className="form">
                 <div className="form-group">
                     <label htmlFor="gender">Välj kön:</label>

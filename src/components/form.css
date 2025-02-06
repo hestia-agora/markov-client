@@ -1,11 +1,9 @@
 
 .form-container {
     background-color: #ffff;
-    padding: 25px;
+    padding: 45px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 400px;
     margin: 0 auto;
 }
 
@@ -14,6 +12,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 50px;
+    padding: 25px;
     background-color: #ffff;
 }
 
@@ -66,7 +65,7 @@ label {
 
 .logoImage {
     width: 80%;
-    margin: 200px auto 0; 
+    margin: 10px auto 0; 
     display: block; 
   }
   

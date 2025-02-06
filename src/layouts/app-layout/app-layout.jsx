@@ -5,15 +5,15 @@ import Sidebar from "../sidebar/sidebar";
 import Styles from "./app-layout.module.css";
 
 function AppLayout() {
-    const [results, setResults] = useState(null); // Shared state for results
+    const [results, setResults] = useState(null); 
 
     return (
         <div className={Styles.application}>
-            <Sidebar setResults={setResults} /> {/* Pass setResults to Sidebar */}
+            <Sidebar setResults={setResults} /> 
             <div className={Styles.content}>
                 <Header />
                 <div className={Styles.main}>
-                    <Outlet context={{ results }} /> {/* Pass results via context */}
+                    <Outlet context={{ results }} />
                 </div>
             </div>
         </div>

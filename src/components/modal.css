@@ -1,0 +1,70 @@
+
+.modal-header {
+    background-color: #f8f9fa; 
+    border-bottom: 2px solid #dee2e6;
+    padding: 20px; 
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .modal-body {
+    height: 700px; 
+    padding: 30px; 
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nav-tabs .nav-item .nav-link {
+    font-weight: bold;
+    color: #bd5050;
+  }
+  
+  .nav-tabs .nav-item .nav-link.active {
+    background-color: #bd5050;
+    color: white;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    padding: 8px;
+  }
+  
+  .form-label {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .description {
+    color: #bd5050;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  .modal-footer {
+    border-top: 2px solid #dee2e6;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .modal-footer button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+  }
+  
+  .modal-footer .btn-primary {
+    background-color: #bd5050;
+    border-color: #bd5050;
+  }
+  
+  .modal-footer .btn-primary:hover {
+    background-color: #bd5050;
+  }
+  

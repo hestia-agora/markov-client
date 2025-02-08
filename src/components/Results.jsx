@@ -13,40 +13,40 @@ const Results = ({ results }) => {
         "Död"
     ];
 
-    const renderMatrix = (matrix, title, isTransitionProbabilities = false) => (
-        <div className="results-table-container">
-            <h2 className="results-title">{title}</h2>
-            <table className="results-table">
-                <thead>
-                    <tr>
-                        <th>State</th>
-                        {isTransitionProbabilities
-                            ? stateNames.map((name, index) => (
-                                  <th key={index}>{name}</th>
-                              )) 
-                            : matrix[0]?.map((_, index) => (
-                                  <th key={index}>Cycle {index + 1}</th>
-                              ))} 
-                    </tr>
-                </thead>
-                <tbody>
-                    {matrix.map((row, rowIndex) => (
-                        <tr key={rowIndex}>
-                            <td>{stateNames[rowIndex] || `State ${rowIndex + 1}`}</td>
-                            {row.map((value, colIndex) => (
-                                <td key={colIndex}>
-                                    {typeof value === 'number'
-                                        ? value.toFixed(2) 
-                                        : value || 'N/A'}
-                                </td>
+    const renderMatrix = (matrix, title) => {
+        if (!matrix || matrix.length === 0) return null;
+
+        // Transpose matrix (Cycles as rows, States as columns)
+        const transposedMatrix = matrix[0].map((_, colIndex) => matrix.map(row => row[colIndex]));
+
+        return (
+            <div className="results-table-container">
+                <h2 className="results-title">{title}</h2>
+                <table className="results-table">
+                    <thead>
+                        <tr>
+                            <th>Cycle</th> {/* Cycles as rows */}
+                            {stateNames.map((name, index) => (
+                                <th key={index}>{name}</th>
                             ))}
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
-
+                    </thead>
+                    <tbody>
+                        {transposedMatrix.map((row, rowIndex) => (
+                            <tr key={rowIndex}>
+                                <td>Cycle {rowIndex + 1}</td> {/* Labeling row as "Cycle X" */}
+                                {row.map((value, colIndex) => (
+                                    <td key={colIndex}>
+                                        {typeof value === 'number' ? value.toFixed(2) : value || 'N/A'}
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        );
+    };
     const renderTotalCosts = (costs) => (
         <div className="results-table-container">
             <h2 className="results-title">Sammanlagd kostnadskalkyl</h2>
@@ -87,35 +87,38 @@ const Results = ({ results }) => {
             </div>
         );
 
-return (
-    <div className="results-container">
-        <h1 className="results-header">Beräknat resultat</h1>
+        return (
+            <div className="results-container">
+                <h1 className="results-header">Beräknat resultat</h1>
+        
+                {/* Commenting out Transition Probabilities */}
+                {/* 
+                {results['Transition Probabilities'] &&
+                    renderMatrix(
+                        results['Transition Probabilities']['utan_insats'],
+                        'Övergångssannolikheter (utan intervention)',
+                        true 
+                    )}
+                {results['Transition Probabilities'] &&
+                    renderMatrix(
+                        results['Transition Probabilities']['med_insats'],
+                        'Övergångssannolikheter (med intervention)',
+                        true 
+                    )}
+                */}
 
-        {/* Commenting out Transition Probabilities */}
-        {/* 
-        {results['Transition Probabilities'] &&
-            renderMatrix(
-                results['Transition Probabilities']['utan_insats'],
-                'Övergångssannolikheter (utan intervention)',
-                true 
-            )}
-        {results['Transition Probabilities'] &&
-            renderMatrix(
-                results['Transition Probabilities']['med_insats'],
-                'Övergångssannolikheter (med intervention)',
-                true 
-            )}
-        */}
-
-        {results['Population Results'] &&
-            Object.entries(results['Population Results']).map(([scenario, data]) =>
-                renderMatrix(data, `Population Results (${scenario})`)
-            )}
-
-        {results['Total Costs'] && renderTotalCosts(results['Total Costs'])}
-        {results['Savings'] && renderSavings(results['Savings'])}
-    </div>
-);
+                {results['Total Costs'] && renderTotalCosts(results['Total Costs'])}
+                {results['Savings'] && renderSavings(results['Savings'])}
+        
+                {results['Population Results'] &&
+                    Object.entries(results['Population Results']).map(([scenario, data]) =>
+                        renderMatrix(data, `Population Results (${scenario})`)
+                    )}
+    
+            </div>
+        );
 };
 
 export default Results;
+
+

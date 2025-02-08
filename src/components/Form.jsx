@@ -9,9 +9,16 @@ const FormComponent = ({ setResults }) => {
   const [formData, setFormData] = useState({
     gender: 'man',
     n_cohort: 1000,
-    n_cycles: 10,
+    n_cycles: 20,
     Initial_age: 65,
     effect: 0.3,
+    insats: 'dietist'
+  });
+
+  // Store parameters separately for each gender
+  const [modalData, setModalData] = useState({
+    man: { parameters: {}, costs: {} },
+    woman: { parameters: {}, costs: {} }
   });
 
   const [showModal, setShowModal] = useState(false); 
@@ -19,21 +26,52 @@ const FormComponent = ({ setResults }) => {
   const handleShowModal = () => setShowModal(true); 
   const handleCloseModal = () => setShowModal(false); 
 
+  // Handle changes in form fields (including gender selection)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === 'effect' ? parseFloat(value) : (name === 'gender' ? value : parseInt(value, 10)),
+      [name]: name === 'effect' ? parseFloat(value) : value
     }));
+  };
+
+  // Handle modal submission - store parameters separately per gender
+  const handleModalSubmit = (data) => {
+    setModalData((prev) => ({
+      ...prev,
+      [data.gender]: { parameters: data.parameters, costs: data.costs }
+    }));
+
+    alert("Alla parametrar är sparade!");
+    setShowModal(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    // Get parameters based on the selected gender
+    const selectedGenderData = modalData[formData.gender];
+
+    if (!selectedGenderData.parameters || !selectedGenderData.costs || 
+        Object.keys(selectedGenderData.parameters).length === 0 || 
+        Object.keys(selectedGenderData.costs).length === 0) {
+      alert("Vänligen fyll i alla modalparametrar innan du beräknar.");
+      return;
+    }
+  
+    const requestData = {
+      ...formData,
+      parameters: selectedGenderData.parameters,
+      costs: selectedGenderData.costs,
+    };
+  
+    console.log("Sending to backend:", requestData);
+  
     try {
-      const data = await runModel(formData);
+      const data = await runModel(requestData);
       setResults(data);
     } catch (error) {
-      alert('Error running the model. Please check the backend connection.');
+      alert("Error running the model. Please check the backend connection.");
     }
   };
 
@@ -46,12 +84,13 @@ const FormComponent = ({ setResults }) => {
           Fyll i parametrar
         </Button>
 
+        {/* Pass selected gender and previously saved data for that gender */}
         <ModalForm 
-        show={showModal} 
-        handleClose={handleCloseModal} 
-        centered
-        dialogClassName="modal-width"
-        style={{ maxWidth: '80%' }}  
+          show={showModal} 
+          handleClose={handleCloseModal} 
+          onSubmit={handleModalSubmit} 
+          gender={formData.gender} 
+          existingData={modalData[formData.gender]} 
         />
 
         <div className="form-group">
@@ -144,4 +183,4 @@ const FormComponent = ({ setResults }) => {
   );
 };
 
-export default FormComponent; 
+export default FormComponent;

@@ -87,32 +87,35 @@ const Results = ({ results }) => {
             </div>
         );
 
-    return (
-        <div className="results-container">
-            <h1 className="results-header">Beräknat resultat</h1>
+return (
+    <div className="results-container">
+        <h1 className="results-header">Beräknat resultat</h1>
 
-            {results['Transition Probabilities'] &&
-                renderMatrix(
-                    results['Transition Probabilities']['utan_insats'],
-                    'Övergångssannolikheter (utan intervention)',
-                    true 
-                )}
-            {results['Transition Probabilities'] &&
-                renderMatrix(
-                    results['Transition Probabilities']['med_insats'],
-                    'Övergångssannolikheter (med intervention)',
-                    true 
-                )}
+        {/* Commenting out Transition Probabilities */}
+        {/* 
+        {results['Transition Probabilities'] &&
+            renderMatrix(
+                results['Transition Probabilities']['utan_insats'],
+                'Övergångssannolikheter (utan intervention)',
+                true 
+            )}
+        {results['Transition Probabilities'] &&
+            renderMatrix(
+                results['Transition Probabilities']['med_insats'],
+                'Övergångssannolikheter (med intervention)',
+                true 
+            )}
+        */}
 
-            {results['Population Results'] &&
-                Object.entries(results['Population Results']).map(([scenario, data]) =>
-                    renderMatrix(data, `Population Results (${scenario})`)
-                )}
+        {results['Population Results'] &&
+            Object.entries(results['Population Results']).map(([scenario, data]) =>
+                renderMatrix(data, `Population Results (${scenario})`)
+            )}
 
-            {results['Total Costs'] && renderTotalCosts(results['Total Costs'])}
-            {results['Savings'] && renderSavings(results['Savings'])}
-        </div>
-    );
+        {results['Total Costs'] && renderTotalCosts(results['Total Costs'])}
+        {results['Savings'] && renderSavings(results['Savings'])}
+    </div>
+);
 };
 
 export default Results;

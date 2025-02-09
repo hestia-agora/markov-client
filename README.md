@@ -1,6 +1,5 @@
-# Markov Model Pilot Project
-
-This is a pilot project for the Markov model provided by Livsmedelsakademy. 
+# Markov Model
+This is the first version for the Markov model provided by Livsmedelsakademy. 
 
 This is the first version, rewritten from the original R model. ThIS project consists of two repository:
 - **Markov API** - Backend implemented in Python

@@ -102,7 +102,7 @@ const ModalForm = ({ show, handleClose, onSubmit }) => {
   return (
     <Modal show={show} onHide={handleClose} centered size="lg">
       <Modal.Header closeButton>
-        <Modal.Title>Fyll i parametrar</Modal.Title>
+        <Modal.Title>Lägg till parametrar</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>

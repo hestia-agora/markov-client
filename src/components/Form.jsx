@@ -81,7 +81,7 @@ const FormComponent = ({ setResults }) => {
       <form onSubmit={handleSubmit} className="form">
 
         <Button variant="light" onClick={handleShowModal}>
-          Lägg till parametrar
+          Lägg till parametrar:
         </Button>
 
         {/* Pass selected gender and previously saved data for that gender */}

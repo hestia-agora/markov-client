@@ -1,9 +1,9 @@
 # Markov Model
 This is the first version for the Markov model provided by Livsmedelsakademy. 
 
-This is the first version, rewritten from the original R model. ThIS project consists of two repository:
-- **Markov API** - Backend implemented in Python
-- **Markov Client** - Frontend built with React - This
+This is the first version, rewritten from the original R model. This project consists of two repository:
+- **markov-api** - Backend implemented in Python
+- **markov-client** - Frontend built with React - This
 
 ## Getting Started
 
